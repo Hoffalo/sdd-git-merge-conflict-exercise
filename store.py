@@ -3,6 +3,9 @@
 TODO(team): implement the pricing rule(s) assigned to you in the README.
 """
 
+# Feature C: flat shipping fee charged on every order
+SHIPPING_FEE = 5.0
+
 
 def calculate_total(
     subtotal, apply_discount=False, apply_tax=False, apply_shipping=False
@@ -10,11 +13,17 @@ def calculate_total(
     """Calculate the final total a customer pays for their cart."""
     total = subtotal
 
+
+    if apply_shipping:
+        total += SHIPPING_FEE
+
     if subtotal > 50:
         total = subtotal * 0.9
 
+
     if apply_tax:
         total *= 1.08
+
 
     return total
 
