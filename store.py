@@ -13,9 +13,13 @@ def calculate_total(
     """Calculate the final total a customer pays for their cart."""
     total = subtotal
 
-    # Feature C: flat $5 shipping fee on every order
+
     if apply_shipping:
         total += SHIPPING_FEE
+
+    if subtotal > 50:
+        total = subtotal * 0.9
+
 
     return total
 
